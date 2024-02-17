@@ -1,0 +1,31 @@
+version: "3.9"
+services:
+  mysql:
+    image: mysql:8.2
+    environment:
+      - MYSQL_DATABASE=events_development
+      - MYSQL_ROOT_PASSWORD=secret
+    networks:
+      - default
+  events:
+    image: "shiva17595/events"
+    ports:
+      - "7003:7003"
+      - "7004:7004"
+    expose:
+      - "7003"
+      - "7004"
+    depends_on:
+      - events-mysql-1
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: secret
+      MYSQL_HOST: "events-mysql-1"
+    networks:
+      - default
+    deploy:
+      resources:
+        limits:
+          memory: 250M
+networks:
+  default: {}

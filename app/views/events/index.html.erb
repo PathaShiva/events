@@ -1,0 +1,39 @@
+<% if user_signed_in? %>
+  <h1>Welcome Home, <%= current_user.email %></h1>
+  <%= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete } %>
+  
+  <div>
+    <div>
+      <%= button_to "Create Event A", events_path(type: 'event_a'), method: :post %>
+      <%= button_to "Create Event B", events_path(type: 'event_b'), method: :post %>
+    </div>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Event Type</th>
+          <th>Event Created At</th>
+          <th>Email Delivered At</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @events.each do |event| %>
+          <tr>
+            <td><%= event.id %></td>
+            <td><%= event.name %></td>
+            <td><%= event.user&.email %></td>
+            <td><%= event.type %></td>
+            <td><%= event.event_created_at %></td>
+            <td><%= event.email_delivered_at %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <h1>Home</h1>
+  <%= link_to 'Sign in', new_user_session_path %>
+<% end %>

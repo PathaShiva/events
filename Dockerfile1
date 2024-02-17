@@ -1,0 +1,11 @@
+FROM shiva17595/events
+USER root
+
+ENV API_HOME /root/src/events
+WORKDIR /root/src/events
+
+COPY . .
+
+RUN chmod +x /root/src/events/entrypoint.sh
+
+ENTRYPOINT ["/root/src/events/entrypoint.sh"]
