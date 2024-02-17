@@ -1,24 +1,14 @@
-# README
+# Prerequisites
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+You need docker environment installed.
 
-Things you may want to cover:
+## STEPS TO SPIN SERVICE
 
-* Ruby version
+Download the repository to your local.
 
-* System dependencies
+```bash
+cd events
+docker compose up
+```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Once you run above commands. Aplication will be running. [CLICK HERE](http://localhost:7003/)
